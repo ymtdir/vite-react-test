@@ -1,17 +1,23 @@
-import { useAuth } from "@/hooks/use-auth";
-import { Button } from "@/components/ui/button";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "./app-sidebar";
 
 export function Dashboard() {
-  const { logout } = useAuth();
-
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-5">
-      <h1 className="text-3xl font-bold">ダッシュボード</h1>
-      <Button onClick={handleLogout}>ログアウト</Button>
-    </div>
+    <SidebarProvider>
+      <div className="flex h-screen bg-background">
+        <AppSidebar />
+        <div className="flex-1 flex flex-col">
+          <header className="border-b p-4">
+            <div className="flex items-center gap-2">
+              <SidebarTrigger />
+              <h1 className="text-lg font-semibold">ダッシュボード</h1>
+            </div>
+          </header>
+          <main className="flex-1 p-4">
+            <p>ダッシュボードの内容</p>
+          </main>
+        </div>
+      </div>
+    </SidebarProvider>
   );
 }

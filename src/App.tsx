@@ -1,16 +1,14 @@
 import "./App.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createGuestRoutes, createProtectedRoutes } from "@/routes/index";
+
+const router = createBrowserRouter([
+  ...createGuestRoutes(),
+  ...createProtectedRoutes(),
+]);
 
 function App() {
-  return (
-    <SidebarProvider>
-      <AppSidebar />
-      <main>
-        <SidebarTrigger />
-      </main>
-    </SidebarProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
