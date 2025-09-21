@@ -1,5 +1,6 @@
-import { Home, Inbox, Calendar, Search, Settings, LogOut } from "lucide-react";
+import { Home, LogOut, Users } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
+import { Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -16,28 +17,13 @@ import {
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/dashboard",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Users",
+    url: "/users",
+    icon: Users,
   },
 ];
 
@@ -58,10 +44,10 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
